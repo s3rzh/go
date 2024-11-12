@@ -189,8 +189,6 @@ b := Binary(200)
 
 ![gointer2](../images/gointer2.png)
 
-//https://github.com/s3rzh/go/blob/main/concurrency_tasks/0_interface/0_intro/images/gointer2.png
-
 Первое слово в значении интерфейса указывает на таблицу интерфейсов `itable`. В нем хранится информация о конкретном типе `type` и списке указателей на методы `fun[0]`. В нашем случае `type`- `Binary`, методы `String() string` и `Get() uint64`.
 
 Второе слово указывает на значение `data`. В нашем случае `data` - 200.
