@@ -12,7 +12,7 @@ func main() {
 	rand.New(rand.NewSource(time.Now().Unix()))
 
 	ctx := context.Background()
-	ctx, _ := context.WithTimeout(ctx, time.Second*2)
+	ctx, _ = context.WithTimeout(ctx, time.Second*2)
 		
 	chanForResp := make(chan int)
 	go RPCCall(chanForResp)
