@@ -27,11 +27,11 @@ func main() {
 		wg.Add(1)
 		go func() {
 			defer wg.Done()
+			mu.Lock()
+			defer mu.Unlock()
 			if _, ok := alreadyStored[doubles[i]]; !ok {
-				mu.Lock()
 				alreadyStored[doubles[i]] = struct{}{}
-				mu.Unlock()
-
+	
 				uniqueIDs <- doubles[i]
 			}
 		}()
