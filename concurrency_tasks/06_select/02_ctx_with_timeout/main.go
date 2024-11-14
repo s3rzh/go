@@ -8,7 +8,7 @@ import (
 
 // add timeout to avoid long waiting
 func main() {
-	rand.Seed(time.Now().Unix())
+	rand.New(rand.NewSource(time.Now().Unix()))
 
 	chanForResp := make(chan int)
 	go RPCCall(chanForResp)
