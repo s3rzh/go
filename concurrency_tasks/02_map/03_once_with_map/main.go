@@ -27,22 +27,21 @@ func main() {
 		wg.Add(1)
 		go func() {
 			defer wg.Done()
-			mu.Lock()
-			defer mu.Unlock()
 			if _, ok := alreadyStored[doubles[i]]; !ok {
+				mu.Lock()
 				alreadyStored[doubles[i]] = struct{}{}
-
+				mu.Unlock()
+				
 				uniqueIDs <- doubles[i]
 			}
 		}()
 	}
 
 	wg.Wait()
-	close(uniqueIDs) // не забываем забыть канал, тогда for range сможет прекратит свою работу.
 	for val := range uniqueIDs {
 		fmt.Println(val)
 	}
-	// close(uniqueIDs) // здесь неправильно
+	
 	fmt.Printf("len of ids: %d\n", len(uniqueIDs)) // 0, 1, 2, 3, 4 ...
 	fmt.Println(uniqueIDs)
 }
