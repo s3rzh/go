@@ -9,7 +9,7 @@ import (
 func main() {
 	// var storage map[int]int // Некорректное создание map
 	writes := 1000
-	storage := make(map[int]int, writes) // создали мапу размером writes
+	storage := make(map[int]int, writes) // создали мапу размером writes, тем самым избегаем "эвакуации"
 	wg := sync.WaitGroup{}
 	mu := sync.Mutex{}
 
