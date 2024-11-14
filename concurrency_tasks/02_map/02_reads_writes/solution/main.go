@@ -9,7 +9,7 @@ import (
 func main() {
 	storage := make(map[int]int, 1000)
 
-	wg := sync.WaitGroup{}
+	wg := &sync.WaitGroup{}
 	reads := 1000
 	writes := 1000
 	mu := sync.RWMutex{}
