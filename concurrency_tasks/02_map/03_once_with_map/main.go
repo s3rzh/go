@@ -42,7 +42,7 @@ func main() {
 		fmt.Println(val)
 	}
 	
-	fmt.Printf("len of ids: %d\n", len(uniqueIDs)) // 0, 1, 2, 3, 4 ...
+	fmt.Printf("len of ids: %d\n", len(uniqueIDs)) // 0
 	fmt.Println(uniqueIDs)
 }
 
