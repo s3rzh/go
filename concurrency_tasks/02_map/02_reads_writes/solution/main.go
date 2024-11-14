@@ -12,7 +12,7 @@ func main() {
 	wg := &sync.WaitGroup{}
 	reads := 1000
 	writes := 1000
-	mu := sync.RWMutex{}
+	mu := &sync.RWMutex{}
 
 	wg.Add(writes)
 	for i := 0; i < writes; i++ {
