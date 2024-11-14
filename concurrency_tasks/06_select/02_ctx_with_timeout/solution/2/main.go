@@ -41,6 +41,7 @@ func RPCCall(ctx context.Context, ch chan<- resp) {
 		// sleep 0-4 sec
 		ch <- resp{
 			id: rand.Int(),
+			err: nil,
 		}
 	}
 }
