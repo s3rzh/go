@@ -38,7 +38,7 @@ func main() {
 	}
 
 	wg.Wait()
-  close(uniqueIDs)
+	close(uniqueIDs)
 	for val := range uniqueIDs {
 		fmt.Println(val)
 	}
