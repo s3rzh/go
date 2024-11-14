@@ -42,7 +42,7 @@ func main() {
 	for val := range uniqueIDs {
 		fmt.Println(val)
 	}
-
+	// close(uniqueIDs) // здесь неправильно
 	fmt.Printf("len of ids: %d\n", len(uniqueIDs)) // 0, 1, 2, 3, 4 ...
 	fmt.Println(uniqueIDs)
 }
