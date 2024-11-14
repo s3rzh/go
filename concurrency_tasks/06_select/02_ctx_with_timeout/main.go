@@ -18,7 +18,7 @@ func main() {
 }
 
 func RPCCall(ch chan<- int) {
-	// sleep 0-4 sec
+	// sleep 0-4 sec имитация долгой работы...
 	time.Sleep(time.Second * time.Duration(rand.Intn(5)))
 
 	ch <- rand.Int()
