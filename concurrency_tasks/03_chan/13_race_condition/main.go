@@ -29,3 +29,5 @@ func main() {
 	// value of i should be 1000
 	fmt.Println("value of i after 1000 operations is", i)
 }
+
+// go run -race ./13_race_condition/main.go
