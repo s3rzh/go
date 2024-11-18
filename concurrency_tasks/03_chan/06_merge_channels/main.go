@@ -38,26 +38,6 @@ func syncMerge[T any](chans ...chan T) chan T {
 	return out
 }
 
-// написать функцию для синхронного мерджа каналов
-// подробно описать ее и понять работу
-// понять функцию для мерджа асинхронную и написать ее самому
-
-// func mergeChannels(channels ...<-chan int) <-chan int {
-// 	var wg sync.WaitGroup
-// 	out := make(chan int)
-// 	output := func(c <-chan int) {
-// 		defer wg.Done()
-// 		for val := range c {
-// 			out <- val
-// 		}
-// 	}
-// 	wg.Add(len(channels))
-// 	for _, c := range channels {
-// 		go output(c)
-// 	}
-// 	go func() {
-// 		wg.Wait()
-// 		close(out)
-// 		}()
-// 		return out
-// 	}
+// написать функцию для Синхронного мерджа каналов
+// подробно описать ее
+// написать Асинхронную функцию для мерджа
