@@ -8,7 +8,7 @@ func main() {
 	var num = 12
 	// launch anonymous goroutine
 	go func(c chan string) {
-		fmt.Println("Hello " + <-c + "!")
+		fmt.Println("Hello " + <-c + "!" + " I am " + fmt.Sprint(num))
 	}(c)
 
 	c <- "John"
