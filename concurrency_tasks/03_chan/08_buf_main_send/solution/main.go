@@ -4,7 +4,7 @@ import (
 	"fmt"
 )
 
-func squares(c chan int) {
+func squares(c <-chan int) {
 	for i := range c {
 		num := <-c
 		fmt.Println(i, num * num)
