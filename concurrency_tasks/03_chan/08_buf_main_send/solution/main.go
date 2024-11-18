@@ -2,18 +2,14 @@ package main
 
 import (
 	"fmt"
-	// "time"
 )
 
 func squares(c chan int) {
-	// for i := 0; i <= 10; i++ {
 	for i := range c {
 		num := <-c
-		// fmt.Println(i, num)
 		fmt.Println(i, num * num)
 
 	}
-	
 }
 
 // что мы увидим при запуске программы?
@@ -32,7 +28,8 @@ func main() {
 	c <- 6
 	c <- 7
 	c <- 8
-	// time.Sleep(time.Second)
+	
+	close(c)
 	fmt.Println("main() stopped")
 }
 
