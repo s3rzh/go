@@ -7,12 +7,12 @@ import (
 	"time"
 )
 
-// avoid deadlock
+\
 func main() {
 	ch := make(chan int)
 	ctx := context.Background()
 	ctx, cancel := context.WithCancel(ctx)
-  defer cancel()
+  	defer cancel()
   
 	go func() {
 		select {
