@@ -19,7 +19,7 @@ func main() {
 		}
 	}()
 	time.Sleep(time.Second)
-	fmt.Println(runtime.NumGoroutine()) // позыкаем кол-во активных горутин в момент этого вызова
+	fmt.Println(runtime.NumGoroutine()) // показываем кол-во активных горутин в момент этого вызова
 }
 
 // решение - добавление default сценария
