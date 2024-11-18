@@ -3,7 +3,7 @@ package main
 import "fmt"
 
 func squares(c chan int) {
-	for i := 0; i <= 3; i++ {
+	for i := 0; i < 3; i++ {
 		num := <-c
 		fmt.Println(num * num)
 	}
