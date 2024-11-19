@@ -90,19 +90,19 @@ func merge(outputsChan ...<-chan int) <-chan int {
 func main() {
 	// step 1: get input numbers channel
 	// by calling `getInputChan` function, it runs a goroutine which sends number to returned channel
-	chanInputNums := getInputChan()
+	chanInputNums := getInputChan() // тут уже происходит работа внутри getInputChan те заполняется выходной канал, можно посмотреть так time.Sleep(1 * time.Second) fmt.Println("chanInputNums len=", len(chanInputNums))
 
 	// step 2: `fan-out` square operations to multiple goroutines
 	// this can be done by calling `getSquareChan` function multiple times where individual function call returns a channel which sends square of numbers provided by `chanInputNums` channel
 	// `getSquareChan` function runs goroutines internally where squaring operation is ran concurrently
-	chanOptSqr1 := getSquareChan(chanInputNums)
-	chanOptSqr2 := getSquareChan(chanInputNums)
+	chanOptSqr1 := getSquareChan(chanInputNums) // начинает выполняется работа сразу после вызова
+	chanOptSqr2 := getSquareChan(chanInputNums) // начинает выполняется работа сразу после вызова
 
 	// step 3: fan-in (combine) `chanOptSqr1` and `chanOptSqr2` output to merged channel
 	// this is achieved by calling `merge` function which takes multiple channels as arguments
 	// and using `WaitGroup` and multiple goroutines to receive square number, we can send square numbers
 	// to `merged` channel and close it
-	chanMergedSqr := merge(chanOptSqr1, chanOptSqr2)
+	chanMergedSqr := merge(chanOptSqr1, chanOptSqr2) // начинает выполняется работа сразу после вызова
 
 	// step 4: let's sum all the squares from 0 to 9 which should be about `285`
 	// this is done by using `for range` loop on `chanMergedSqr`
