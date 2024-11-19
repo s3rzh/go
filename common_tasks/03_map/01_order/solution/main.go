@@ -7,8 +7,8 @@ import (
 // какой будет порядок элементов в первой и втором принте
 func main() {
 	groceries := map[string]string{
-		"a": "10",
-		"b": "20",
+		"b": "10",
+		"a": "20",
 		"c": "30",
 	}
 	for idx, item := range groceries {
