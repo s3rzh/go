@@ -15,7 +15,7 @@ func getInputChan() <-chan int {
 
 	// run goroutine
 	go func() {
-		for num := range numbers {
+		for _, num := range numbers {
 			input <- num
 		}
 		// close channel once all numbers are sent to channel
