@@ -6,7 +6,7 @@ import (
 	"time"
 )
 
-// what is the problem here?
+// What's the problem here?
 
 func main() {
 	input := []int{1, 2, 3, 4, 5}
@@ -30,4 +30,5 @@ func main() {
 	fmt.Println(result)
 }
 
-// here DATA RACE
+// Here we'he DATA RACE
+// go run -race ./01_concurrent_append/main.go
