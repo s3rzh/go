@@ -11,7 +11,7 @@ import (
 func main() {
 	input := []int{1, 2, 3, 4, 5}
 
-	wg := sync.WaitGroup{}
+	wg := &sync.WaitGroup{}
 	result := []int{}
 
 	for _, num := range input {
