@@ -44,6 +44,7 @@
 var m map[int]string 
 
 // инициализированная мапа
+
 m := map[int]string{}
 m := make(map[int]string) или указать ёмкость мапы кторым параметром m := make(map[int]string, 1000) чтобы избежать "эвакуации"
 
