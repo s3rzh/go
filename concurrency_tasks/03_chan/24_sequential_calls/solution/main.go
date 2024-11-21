@@ -6,7 +6,6 @@ func main() {
 	timeStart := time.Now()
 
 	c1, c2 := worker(), worker()
-
 	_, _ = <-c1, <-c2
 
 	println(int(time.Since(timeStart).Seconds())) // 3 sec.
