@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"runtime"
 )
 
 // Какая тут проблема и как решить?
