@@ -16,4 +16,4 @@ func changePointer(p *int) {
 	*p = v // разыменовываем и копируем
 }
 
-// Output 5 3
+// Output: 5 3
