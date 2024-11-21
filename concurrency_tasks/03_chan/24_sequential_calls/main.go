@@ -1,9 +1,7 @@
 package main
 
 import "time"
-
 // что выведет 3 или 6 и как исправить?
-
 func main() {
 	timeStart := time.Now()
 
