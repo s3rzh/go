@@ -26,3 +26,5 @@ func main() {
 
 // Data race это состояние когда разные потоки обращаются к одной ячейке памяти без какой-либо синхронизации и как минимум один из потоков осуществляет запись (те это происходит на строках 15 запись и 18 чтение).
 // GOMAXPROCS устанавливает количество задействованых P в runtime (см модель G-M-P), которые участвуют в выполнение G и никак не влияют на кол-во доступных M (Thread). M могут добавляться и удаляться при необходимости
+
+// A typical fix for DATA RACE is to use a channel or a mutex. To preserve the lock-free behavior, one can also use the sync/atomic package.
