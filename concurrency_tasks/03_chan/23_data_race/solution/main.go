@@ -3,28 +3,32 @@ package main
 import (
 	"fmt"
 	"runtime"
+	"sync"
 )
 
 func main() {
-
-	ch := make(chan struct{})
+	mu := &sync.RWMutex{}
 
 	runtime.GOMAXPROCS(1)
 
 	done := false
 
 	go func() {
+		mu.Lock()
 		done = true
-		ch <- struct{}{}
+		mu.Unlock()
+
 	}()
 
-	<-ch
-	for !done {
-
+	for {
+		mu.RLock()
+		if done {
+			break
+		}
+		mu.RUnlock()
 	}
-
 	fmt.Println("finished")
+
 }
 
-// решение, нам придётся упорядочить наши горутины, при помощи небуферизированого канала.
-// те на 21 строке мы блочим основную горутину и перелючаем на саб-горутину, которая после выполняние посылает сигнал в канал и затем заблокируеся основная горутина.
+// иле через RWMutex (много чтений, мало записей, у нас одна) это если нам важно чтобы выполнятся цикл
