@@ -22,3 +22,7 @@ func main() {
 	changeperson(person)
 	fmt.Println("person is", person)
 }
+
+// Вывод:
+// person is &{Ivan 20}
+// person is &{Ivan 20}
