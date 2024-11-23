@@ -23,13 +23,10 @@ func GetInstance() *Singleton {
 }
 
 func main() {
-	const N = 5
-
 	wg := &sync.WaitGroup{}
 
-	wg.Add(N)
-
-	for i := 0; i < N; i++ {
+	for i := 0; i < 5; i++ {
+		wg.Add(1)
 		go func() {
 			defer wg.Done()
 			fmt.Printf("%p\n", GetInstance())
@@ -40,4 +37,4 @@ func main() {
 	wg.Wait()
 }
 
-// В результате, адрес instance будет один и тот же (выведен 5 раз на строке 33)
+// В результате, адрес instance будет один и тот же (выведен 5 раз на строке 32)
