@@ -10,8 +10,6 @@ import (
 
 const MaxMessageChannelSize = 5
 
-// MessageChannel
-
 type MessageChannel struct {
 	maxBufferSize int
 	buffer        []string
@@ -28,9 +26,11 @@ func (mc *MessageChannel) IsEmpty() bool {
 	return len(mc.buffer) == 0
 
 }
+
 func (mc *MessageChannel) IsFull() bool {
 	return len(mc.buffer) == mc.maxBufferSize
 }
+
 func (mc *MessageChannel) Add(message string) {
 	mc.buffer = append(mc.buffer, message)
 }
@@ -40,8 +40,6 @@ func (mc *MessageChannel) Get() string {
 	mc.buffer = mc.buffer[1:]
 	return message
 }
-
-// Producer
 
 type Producer struct {
 	cond           *sync.Cond
@@ -68,8 +66,6 @@ func (p *Producer) Produce(message string) {
 	p.cond.Signal()
 }
 
-// Consumer
-
 type Consumer struct {
 	id             int
 	cond           *sync.Cond
@@ -82,6 +78,7 @@ func NewConsumer(cond *sync.Cond, messageChannel *MessageChannel) *Consumer {
 		messageChannel: messageChannel,
 	}
 }
+
 func (c *Consumer) Consume() {
 	time.Sleep(1 * time.Second) // Simulating some work
 	c.cond.L.Lock()
@@ -123,3 +120,15 @@ func main() {
 	}()
 	wg.Wait()
 }
+
+
+// В этом примере у нас есть горутина-производитель, которая создает сообщения и добавляет их в канал сообщений, и горутина-потребитель, которая потребляет сообщения. Канал сообщений имеет максимальный размер, определенный MaxMessageChannelSize .
+
+// Горутина-производитель добавляет сообщения в канал сообщений и использует cond.Signal() для уведомления горутины-потребителя о появлении новых данных. 
+// Если канал сообщений заполнен, горутина производителя ожидает с помощью cond.Wait() , пока потребитель не израсходует некоторые данные и не освободит место в канале сообщений.
+
+// Аналогично, горутина-потребитель потребляет сообщения из канала сообщений и использует cond.Signal() для уведомления горутины-производителя, когда в канале сообщений становится доступным место. 
+// Если он пуст, горутина-потребитель ждет, используя cond.Wait() , пока производитель не создаст некоторые данные и не добавит их в канал сообщений.
+
+// Здесь sync.Cond обеспечивает координацию и синхронизацию между горутинами производителя и потребителя. 
+// Это гарантирует, что потребитель ждет, когда канал сообщений станет пустым, а производитель ждет, когда он заполнится, тем самым решая проблему производитель-потребитель.
