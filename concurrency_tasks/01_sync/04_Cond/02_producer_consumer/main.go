@@ -57,7 +57,7 @@ func (p *Producer) Produce(message string) {
 	time.Sleep(500 * time.Millisecond) // Simulating some work
 	p.cond.L.Lock()
 	defer p.cond.L.Unlock()
-	for p.messageChannel.IsFull() {
+	for p.messageChannel.IsFull() { // возможно, здесь цикл, а не if тк после p.cond.Wait() нужно убедиться, а не успели ли какае-то другая горутина заполнить канал.
 		fmt.Println("Producer is waiting because the message channel is full")
 		p.cond.Wait()
 	}
@@ -83,7 +83,7 @@ func (c *Consumer) Consume() {
 	time.Sleep(1 * time.Second) // Simulating some work
 	c.cond.L.Lock()
 	defer c.cond.L.Unlock()
-	for c.messageChannel.IsEmpty() {
+	for c.messageChannel.IsEmpty() { // если канал пуст, то обращаться к нему (ниже Get) нет смысла
 		fmt.Println("Consumer is waiting because the message channel is empty")
 		c.cond.Wait()
 	}
