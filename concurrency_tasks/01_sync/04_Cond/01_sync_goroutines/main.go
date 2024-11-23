@@ -30,7 +30,7 @@ func main() {
 	go func() {
 		fmt.Println("Goroutine 2 is started")
 		defer wg.Done()
-		time.Sleep(3 * time.Second) // имитация какой-то работы
+		time.Sleep(5 * time.Second) // имитация какой-то работы
 		cond.L.Lock() // получает блокировку
 		defer cond.L.Unlock()
 		fmt.Println("Goroutine 2 is signaling condition")
