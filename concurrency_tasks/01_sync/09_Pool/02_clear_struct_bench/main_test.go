@@ -52,4 +52,9 @@ func BenchmarkWithoutSyncPool(b *testing.B) {
 
 // go test -bench=. -benchmem
 
+// В моём случае алокаций не случилось ни там ни там.. (Версия go 1.23.2)
+// BenchmarkWithSyncPool-8           496591              2401 ns/op               0 B/op          0 allocs/op
+// BenchmarkWithoutSyncPool-8        562040              2133 ns/op               0 B/op          0 allocs/op
+
+
 
