@@ -5,6 +5,8 @@ import (
 	"fmt"
 )
 
+// Данное решение не подадёт для многобайтных символов
+
 func main() {
 	fmt.Println(IsPalindrome("Hello")) // false
 	fmt.Println(IsPalindrome("oko"))   // true
