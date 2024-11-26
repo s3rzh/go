@@ -33,4 +33,6 @@ func CheckIfStringsAreAnagram(source string, target string) bool {
 	return true
 }
 
+// Решение через сортировку.
+
 // Анаграма - так называют слово, которое содержит все буквы другого слова в том же количестве, но ином порядке.
