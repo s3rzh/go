@@ -28,3 +28,5 @@ func main() {
 // GOMAXPROCS устанавливает количество задействованых P в runtime (см модель G-M-P), которые участвуют в выполнение G и никак не влияют на кол-во доступных M (Thread). M могут добавляться и удаляться при необходимости
 
 // A typical fix for DATA RACE is to use a channel or a mutex. To preserve the lock-free behavior, one can also use the sync/atomic package.
+
+// Компелятор GO, да и процессор может переставлять инструкции (для оптимизации). Те они не обязательно будут выполнятся в той последовательности, котрой написал программист.
