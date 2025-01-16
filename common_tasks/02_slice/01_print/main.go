@@ -12,7 +12,7 @@ func main() {
 	fmt.Println(slice)     // 1 2 3
 	process(slice)
 	fmt.Println(slice)     // 3 нуля
-	fmt.Println(slice[:6]) // 6 нулей (последний не включительно) операция ре-слайсинг
+	fmt.Println(slice[:6]) // 6 нулей (последний не включительно) операция ре-слайсинг, как бы открываем доступ к 6 элементам (к 3ем первым доступ уже есть)
 }
 
 func process(slice []int) {
