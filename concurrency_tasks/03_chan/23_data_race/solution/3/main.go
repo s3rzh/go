@@ -15,7 +15,7 @@ func main() {
 		done.Store(true)
 	}()
 
-	for done.Load() {
+	for !done.Load() {
 	}
 	fmt.Println("finished")
 }
