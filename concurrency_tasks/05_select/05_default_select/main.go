@@ -32,7 +32,7 @@ func main() {
 	go service1(chan1)
 	go service2(chan2)
 
-	time.Sleep(3 * time.Second) // попробовать с задержкой и без
+	time.Sleep(3 * time.Second) // попробовать с задержкой и без, скорее всего в этом случае будет выполнен default
 
 	select {
 	case res := <-chan1: // либо этот тк через 3 секунды уже данные будут в обоих каналах
