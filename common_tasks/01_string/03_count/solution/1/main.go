@@ -5,7 +5,7 @@ func main() {
 	charCount := 0
 
 	// посчитать кол-во символов в строке
-	for range str {
+	for range str {  // в данном случае for range будет возращать руны!
 		charCount++
 	}
 
