@@ -14,7 +14,7 @@ func IsPalindrome(str string) bool {
 	reversedStr := strings.Builder{}
 
 	for i := len(str) - 1; i >= 0; i-- {
-		reversedStr.WriteByte(str[i])
+		reversedStr.WriteByte(str[i]) // сработает, только для однобайтных символов (напр. en)
 	}
 
 	return str == reversedStr.String()
