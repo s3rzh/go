@@ -1,11 +1,13 @@
 Контекстом называют интерфейс Context из пакета context.
 
+```go
 type Context interface {
 	Deadline() (deadline time.Time, ok bool)
 	Done() <-chan struct{}
 	Err() error
 	Value(key any) any
 }
+```
 
 Код почти дословно иллюстрирует, для чего используется контекст:
 
