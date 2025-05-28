@@ -6,7 +6,6 @@ import (
 )
 
 func main() {
-
     requests := make(chan int, 5) // канал запросов которые нужно обслужить.
     for i := 1; i <= 5; i++ {
         requests <- i
